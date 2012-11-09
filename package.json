@@ -1,0 +1,19 @@
+{
+  "name": "nko3-i-dont-node",
+  "version": "0.0.0",
+  "description": "I Don't Node",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko3/i-dont-node.git"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "subdomain": "i-dont-node.nko3"
+}
