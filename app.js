@@ -6,18 +6,17 @@
 var express = require('express')
   , engines = require('consolidate')
   , routes = require('./routes')
-  , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
+  , db = require('./database')
   , settings = require('./settings');
 
-var app = express();
-
+app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
-  app.engine('html', engines.ejs);
   app.set('views', __dirname + '/views');
+  app.engine('html', engines.ejs);
   app.set('view engine', 'html');
   app.use(express.favicon());
   app.use(express.logger('dev'));
@@ -34,8 +33,18 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/groups', routes.groups);
+app.get('/groups/:id', routes.group);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+require('./routes/login');
+
+db.connect()
+.then(function() {
+  console.log('Connected to MongoDB at ' + settings.DATABASE_URL);
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log("Express server listening on port " + app.get('port'));
+  });
+})
+.fail(function(err) {
+  console.log('Failed to connect to database');
 });
