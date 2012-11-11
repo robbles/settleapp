@@ -1,3 +1,23 @@
+var AppRouter = Backbone.Router.extend({
+  routes: {
+    "":                                             "dashboard",
+    "home":                                         "dashboard",
+    "settings":                                      "settings",
+
+  },
+
+  // current_view session variable should be the name of the template
+  dashboard: function() {
+  	console.log('dashboard called');
+  },
+
+  profile: function () {
+
+  }
+});
+
+Router = new AppRouter();
+Backbone.history.start({pushState: false});
 
 $(document).ready(function () {
 
@@ -37,13 +57,15 @@ $(document).ready(function () {
 	}
 	];
 
-
 	var main = ich.main(application_data);
+
 	$('body').append(main);
 
-
-
 });
+
+
+// ajax callback with /expenses
+// 
 
 
 // var user = ich.user(user_data_object)
