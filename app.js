@@ -11,8 +11,7 @@ var express = require('express')
   , db = require('./database')
   , settings = require('./settings');
 
-var app = express();
-
+app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -36,6 +35,8 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/groups', routes.groups);
 app.get('/groups/:id', routes.group);
+
+require('./routes/login');
 
 db.connect()
 .then(function() {
