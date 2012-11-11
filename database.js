@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
-var DATABASE_URL = 'mongodb://settleapp:xBOEidj64v@ds039267.mongolab.com:39267/settleapp';
+var settings = require('./settings');
 
 var UserSchema = new Schema({
   name: { type: String, required: true },
@@ -34,6 +34,6 @@ var Invited = exports.Invited = mongoose.model('Invited', InvitedSchema);
 var Expense = exports.Expense = mongoose.model('Expense', ExpenseSchema);
 
 exports.connect = function() {
-  return Q.ncall(mongoose.connect, mongoose, DATABASE_URL);
+  return Q.ncall(mongoose.connect, mongoose, settings.DATABASE_URL);
 };
 

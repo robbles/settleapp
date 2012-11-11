@@ -2,9 +2,9 @@
   "name": "nko3-i-dont-node",
   "version": "0.0.0-1",
   "description": "I Don't Node",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
   "dependencies": {
     "mongoose": "~3.4.0",
     "q": "~0.8.10",
+    "hjs": "*",
     "express": "~3.0.2"
   },
   "engines": {

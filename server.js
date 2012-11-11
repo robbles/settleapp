@@ -4,6 +4,7 @@ var express = require('express');
 var database = require('./database');
 
 app = express();
+app.use(express.logger());
 
 app.get('/', function(req, res){
     res.send('Hello World');
