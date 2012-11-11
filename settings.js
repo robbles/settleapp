@@ -2,7 +2,7 @@
 console.log(process.env.DATABASE_URL);
 module.exports = {
 
-  DATABASE_URL: process.env.DATABASE_URL,
+  DATABASE_URL: process.env.DATABASE_URL || 'mongodb://settleapp:xBOEidj64v@ds039267.mongolab.com:39267/settleapp',
 
   SECRET_KEY: process.env.SECRET_KEY || 'secret',
 
