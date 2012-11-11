@@ -22,9 +22,17 @@ app.get('/',
       }
       else {
         console.log('User found: ' + user._id);
-        res.render('index', { title: 'Express', user: user });
+
+        db.Group.findByUser(user, function(err, groups) {
+          if(err) {
+            console.log('Error finding user: ' + err);
+            return res.send(500, 'Error fetching user data for: ' + req.user);
+          }
+          console.log(groups.length + ' groups found');
+
+          res.render('index', { title: 'Express', user: user, groups: groups });
+        });
       }
     });
-
 });
 

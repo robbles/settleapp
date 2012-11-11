@@ -2,6 +2,7 @@ console.log('hello world');
 
 window.App = {
   appName: "SettleApp",
-  noGroups: false,
-  user: <%- JSON.stringify(user) %>
+  noGroups: <%= groups.length === 0 %>,
+  groups: <%- JSON.stringify(groups) %>,
+  user: <%- JSON.stringify(user) %>,
 };

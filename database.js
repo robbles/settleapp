@@ -15,6 +15,7 @@ var UserSchema = new Schema({
   owing: { type: Number, required: true },
 });
 
+
 var InvitedSchema = new Schema({
   address: { type: String, required: true },
 });
@@ -33,6 +34,10 @@ var GroupSchema = new Schema({
   members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   invited: [{ type: Schema.Types.ObjectId, ref: 'Invited' }],
 });
+
+GroupSchema.statics.findByUser = function (user, cb) {
+  this.find({ members: user }, cb);
+};
 
 var Group = exports.Group = mongoose.model('Group', GroupSchema);
 var User = exports.User = mongoose.model('User', UserSchema);
