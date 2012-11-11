@@ -1,9 +1,8 @@
 var AppRouter = Backbone.Router.extend({
   routes: {
-    "":                                             "dashboard",
-    "home":                                         "dashboard",
-    "settings":                                      "settings",
-
+    "":                                              "dashboard",
+    "#home":                                         "dashboard",
+    "#settings":                                      "settings"
   },
 
   // current_view session variable should be the name of the template
@@ -11,8 +10,8 @@ var AppRouter = Backbone.Router.extend({
   	console.log('dashboard called');
   },
 
-  profile: function () {
-
+  settings: function () {
+  	console.log('settings called');
   }
 });
 
@@ -65,7 +64,7 @@ $(document).ready(function () {
 
 
 // ajax callback with /expenses
-// 
+// create new ich object and pass in to templates?
 
 
 // var user = ich.user(user_data_object)
