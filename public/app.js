@@ -75,8 +75,9 @@ $('#createGroup').live("click", function(){
 
   	var newGroup = ich.singleGroup(groupInfo);
 	$('.yourGroups').append(newGroup);
-	$('#newGroupModal').modal('hide');
 	
+	$('#newGroupModal').modal('hide');
+
 	return false;
 });
 
