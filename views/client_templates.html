@@ -24,7 +24,7 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a id="userSettings"><span class="awe-lock"></span>Settings</a></li>
+						<li><a href="#settings" id="userSettings"><span class="awe-lock"></span>Settings</a></li>
 						<li><a id="logout"><span class="awe-remove"></span>Logout</a></li>
 					</ul>
 				</div>
@@ -108,7 +108,7 @@
 <!-- CONTENT (RIGHT SIDE) TEMPLATE -->
 <script id="content" type="text/html">
 <!-- Right (content) side -->
-<div class="content-block" role="main">
+<div id="contentBlock" class="content-block" role="main">
 
 	<!-- Page header -->
 	<article class="page-header">
@@ -273,7 +273,7 @@
 					<div class="control-group">
 						<label class="control-label" for="input">Email address</label>
 						<div class="controls">
-							<input id="input" class="input-xlarge" type="text" value="email@facebook.com">
+							<input id="input" class="input-xlarge" type="text" value="{{email}}">
 							<p class="help-block">Change the email address we send you payments to</p>
 						</div>
 					</div>
@@ -293,7 +293,7 @@
 	<ul>
 		<li><a href="mailto:andreimpop@gmail.com" class="">Support</a></li>
 	</ul>
-	<a href="index.html#top" class="btn btn-flat pull-right">Top &uarr;</a>
+	<a href="#top" class="btn btn-flat pull-right">Top &uarr;</a>
 </footer>
 </script>
 

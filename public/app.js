@@ -1,26 +1,35 @@
 var AppRouter = Backbone.Router.extend({
   routes: {
     "":                                              "dashboard",
-    "#home":                                         "dashboard",
-    "#settings":                                      "settings"
+    "home":                                         "dashboard",
+    "settings":                                      "settings"
   },
 
   // current_view session variable should be the name of the template
   dashboard: function() {
   	console.log('dashboard called');
+
   },
 
   settings: function () {
-  	console.log('settings called');
-  }
+	// fetch the settings data  	
+  	settings_data = { 
+  		email: "andreimpop@gmail.com"
+  	}
+
+  	$('#contentBlock').fadeOut();
+	var settings = ich.settings(settings_data);
+	$('body').append(settings);
+
+ 	}
 });
 
 Router = new AppRouter();
-Backbone.history.start({pushState: false});
+Backbone.history.start();
 
 $(document).ready(function () {
 
-	application_data = {
+  	application_data = {
 		applicationName: "xpense",
 		username: "Andrei Pop",
 		email: "andreimpop@gmail.com",
@@ -41,6 +50,9 @@ $(document).ready(function () {
 		],
 		amountOwing: 80.25
 	};
+  	var main = ich.main(application_data);
+	$('body').append(main);
+
 
 	expenses = 
 	[
@@ -56,9 +68,7 @@ $(document).ready(function () {
 	}
 	];
 
-	var main = ich.main(application_data);
 
-	$('body').append(main);
 
 });
 
