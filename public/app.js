@@ -82,6 +82,27 @@ $('#createGroup').live("click", function(){
 	return false; // prevent refresh
 });
 
+$('#nameGroup').live("click", function(){
+	var groupInfo = {
+		_id: null,
+		name: groupName,
+		invited: 'test@example.com'
+	};
+
+	// send request to create group to server
+	$.ajax({
+	  type: 'POST',
+	  url: '/groups',
+	  data: groupInfo,
+	  dataType: 'json',
+	  success: function(data){
+	  	window.location.reload();
+	  }
+	});
+
+	return false; // prevent refresh
+});
+
 
 /// HANDLE EXPENSE CREATION
 
@@ -110,21 +131,21 @@ $('#createExpense').live("click", function(){
 		cost: cost,
 		whoBought: whoBought,
 		whoIsPitching: whoIsPitching
-	}
+	};
 
 	// send request to create group to server
-	$.ajax({
-	  type: 'POST',
-	  url: '/expenses',
-	  data: expenseInfo,
-	  dataType: 'json',
-	  success: function(data){
-	  	groupInfo._id = data._id
-	  	// var newGroup = ich.singleGroup(groupInfo);
-		//$('.yourGroups').append(newGroup);
-		}/$('#expenseModal').modal('hide');
-	  }
-	});
+  $.ajax({
+    type: 'POST',
+    url: '/expenses',
+    data: expenseInfo,
+    dataType: 'json',
+    success: function(data){
+      groupInfo._id = data._id;
+      // var newGroup = ich.singleGroup(groupInfo);
+      //$('.yourGroups').append(newGroup);
+      $('#expenseModal').modal('hide');
+    }
+  });
 
 	return false; // prevent refresh
 });
