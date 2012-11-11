@@ -9,6 +9,10 @@ var settings = require('./settings');
 
 var UserSchema = new Schema({
   name: { type: String, required: true },
+  email: { type: String, required: true },
+  externalId: { type: String, required: true },
+  avatarUrl: { type: String, required: true },
+  owing: { type: Number, required: true },
 });
 
 var InvitedSchema = new Schema({
@@ -16,7 +20,9 @@ var InvitedSchema = new Schema({
 });
 
 var ExpenseSchema = new Schema({
+  name: { type: String, required: true },
   amount: { type: Number, required: true },
+  buyer: { type: Schema.Types.ObjectId, ref: 'User' },
   members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 });
 
