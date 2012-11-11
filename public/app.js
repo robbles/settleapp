@@ -29,9 +29,13 @@ Backbone.history.start();
 
 $(document).ready(function () {
 
-$('#nameGroup').click(function(){
-	return false;
-});
+
+// $('#nameGroup').click(function(){
+// 	return false;
+// });
+
+
+/// HANDLE GROUP CREATION
 
 // add friends emails on enter
 $('#addFriends').live('keypress', function (e) {
@@ -71,9 +75,18 @@ $('#createGroup').live("click", function(){
 
 	$('#newGroupModal').modal('hide');
 	
-
 	return false;
 });
+
+
+/// HANDLE EXPENSE CREATION
+
+
+
+
+
+
+
 
 // Insert global App into main body
 var main = ich.main(App);
