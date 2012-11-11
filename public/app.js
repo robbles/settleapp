@@ -68,13 +68,4 @@ $(document).ready(function () {
 	}
 	];
 
-
-
 });
-
-
-// ajax callback with /expenses
-// create new ich object and pass in to templates?
-
-
-// var user = ich.user(user_data_object)
