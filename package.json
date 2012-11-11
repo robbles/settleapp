@@ -13,7 +13,8 @@
   "dependencies": {
     "mongoose": "~3.4.0",
     "q": "~0.8.10",
-    "hjs": "*",
+    "ejs": "*",
+    "consolidate": "*",
     "express": "~3.0.2"
   },
   "engines": {
