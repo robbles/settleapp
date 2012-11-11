@@ -1,6 +1,6 @@
 {
   "name": "nko3-i-dont-node",
-  "version": "0.0.0",
+  "version": "0.0.0-1",
   "description": "I Don't Node",
   "main": "server.js",
   "scripts": {
@@ -11,6 +11,8 @@
     "url": "git@github.com:nko3/i-dont-node.git"
   },
   "dependencies": {
+    "mongoose": "~3.4.0",
+    "q": "~0.8.10"
   },
   "engines": {
     "node": "0.8.x"
