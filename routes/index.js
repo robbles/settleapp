@@ -1,14 +1,16 @@
 
 var db = require('../database');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 /*
  * GET home page.
  */
-app.get('/', function(req, res){
-  console.log(req.user);
-  res.render('index', { title: 'SettleApp', user: req.user });
+
+app.get('/', 
+  ensureLoggedIn('/login'),
+  function(req, res) {
+  console.log('req.user: ' + (typeof req.user) + ' : ' + req.user);
+
+  res.render('index', { title: 'Express', user: req.user });
 });
 
-app.get('/login', function(req, res){
-  res.render('login', { title: 'SettleApp' });
-});
