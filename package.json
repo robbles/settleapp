@@ -1,6 +1,6 @@
 {
   "name": "nko3-i-dont-node",
-  "version": "0.0.0-5",
+  "version": "0.0.0-6",
   "description": "I Don't Node",
   "main": "app.js",
   "scripts": {
