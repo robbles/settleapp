@@ -113,18 +113,19 @@ $('#createExpense').live("click", function(){
 	}
 
 	// send request to create group to server
-	$.ajax({
-	  type: 'POST',
-	  url: '/expenses',
-	  data: expenseInfo,
-	  dataType: 'json',
-	  success: function(data){
-	  	groupInfo._id = data._id
-	  	// var newGroup = ich.singleGroup(groupInfo);
-		//$('.yourGroups').append(newGroup);
-		}/$('#expenseModal').modal('hide');
-	  }
-	});
+	// $.ajax({
+	//   type: 'POST',
+	//   url: '/expenses',
+	//   data: expenseInfo,
+	//   dataType: 'json',
+	//   success: function(data){
+	//   	expenseInfo._id = data._id;
+	// 	$('#expenseModal').modal('hide');
+	//   }
+	// });
+
+	$('#expenses').append(ich.expense(expenseInfo));
+	$('#expenseModal').modal('hide');
 
 	return false; // prevent refresh
 });
@@ -133,6 +134,7 @@ $('#createExpense').live("click", function(){
 
 // Insert global App into main body
 var main = ich.main(App);
+// ich.content(Expenses);
 $('body').append(main);
 
 // adjust the modal for mobile devices
