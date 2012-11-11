@@ -4,6 +4,11 @@ var db = require('../database');
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
+// display login buttons
+app.get('/login', function(req, res){
+  res.render('login', { title: 'Express' });
+});
+
 // GET /auth/facebook
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in Facebook authentication will involve
