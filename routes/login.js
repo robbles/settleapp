@@ -1,12 +1,3 @@
-
-app.get('/login/', function(req, res){
-  res.send("do passport login");
-});
-
-app.get('/loginComplete/', function(req, res){
-  res.send("done login yayyy");
-});
-
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -30,10 +21,10 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successReturnToOrRedirect: '/', failureRedirect: '/login' }),
   function(req, res) {
-
 });
 
 app.get('/logout', function(req, res){
+  console.log('logout fired');
   req.logOut();
   res.redirect('/');
 });
