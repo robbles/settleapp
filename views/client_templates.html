@@ -1,7 +1,284 @@
-<script id="user" type="text/html">
-  <li>
-    <p class="name">Hello I'm {{ name }}</p>
-    <p><a href="http://twitter.com/{{ twitter }}">@{{ twitter }}</a></p>
-  </li>
+<!-- MAIN TEMPLATE -->
+<script id="main" type="text/html">
+		{{> header}}
+	<section class="container" role="main">
+		{{> navigation}}
+		{{> content}}		
+	</section>
+		{{> footer}}
+</script>
+
+<!-- HEADER TEMPLATE -->
+<script id="header" type="text/html">
+<!-- Main page header -->
+<header class="container">
+	<!-- Main page logo -->
+	<h1>xpense</h1>
+	<!-- Main page headline -->
+	<p>easily buy things with people you know</p>
+	<!-- Alternative navigation -->
+	<nav>
+		<ul>
+			<li>
+				<div class="btn-group">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="index.html#">
+						Settings
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><span class="awe-lock"></span>Settings</a></li>
+						<li><a href="#"><span class="awe-remove"></span>Logout</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<!-- /Alternative navigation -->
+</header>
+<!-- /Main page header -->
+</script>
+
+<!-- NAVIGATION TEMPLATE -->
+<script id="navigation" type="text/html">
+
+<!-- Left (navigation) side -->
+		<div class="navigation-block">
+		
+			<!-- User profile -->
+			<section class="user-profile">
+				<figure>
+					<img alt="John Pixel avatar" src="http://placekitten.com/60/60">
+					<figcaption>
+						<h2 style="margin-top:15px;">Andrei Pop</h2>
+					</figcaption>
+				</figure>
+			</section>
+			<!-- /User profile -->
+			
+			<section class="balance">
+				<h2>In total you owe</h2>
+				<strong>$ 80.25</strong>
+			</section>
+
+			<!-- Main navigation -->
+			<nav class="main-navigation" role="navigation">
+				<ul>
+					<li>
+						<a href="#"><span class="awe-th-list"></span>Your Groups</a>
+						<ul>
+							<li><a href="gallery.html">Roommates : $70</a></li>
+							<li><a href="gallery.html">Lab Group : $10.25</a></li>
+						</ul>
+					</li>					
+				</ul>
+				<br/>
+				<a href="#newGroupModal" data-toggle="modal" class="btn btn-success" href="#"> + New expense group</a>
+
+				<div id="newGroupModal" class="modal fade hide" tabindex="-1" role="dialog">
+				 <form class="form-horizontal">
+					<fieldset>
+						<div class="alert alert-success">
+							<strong>Create a new expense group</strong>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="input4">Name your group</label>
+							<div class="controls">
+								<input id="input" class="input span3" type="text">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="input4">Add or invite friends</label>
+							<div class="controls">
+								<input id="input" class="input span3" type="text">
+								<p class="help-block">Just start typing your facebook friends name</p>
+							</div>
+						</div>
+
+						<div class="form-actions pull-right">
+							<button class="btn btn-alt btn-primary btn-large" type="submit">Create Group</button>
+							<button class="btn btn-alt btn-large">Cancel</button>
+						</div>
+					</fieldset>
+				</form>					 
+				</div>
+
+			</nav>
+			<!-- /Main navigation -->
+		</div>
+		<!-- Left (navigation) side -->
+</script>
+
+<!-- CONTENT (RIGHT SIDE) TEMPLATE -->
+<script id="content" type="text/html">
+<!-- Right (content) side -->
+<div class="content-block" role="main">
+
+	<!-- Page header -->
+	<article class="page-header">
+		<h1>Roomates</h1>
+		
+		<a class="" href="#"> + Add a member</a>
+
+		<p class="pull-right">Add things you buy for this group, easily split payments up, and get paid.</p>
+		<div class="group-members">
+			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
+			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
+			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
+		</div>
+
+		<a class="btn btn-success btn-large pull-right" href="#expenseModal" data-toggle="modal">Add expense</a>
+
+		<div id="expenseModal" class="modal fade hide" tabindex="-1" role="dialog">
+		 <form class="form-horizontal">
+			<fieldset>
+				<div class="alert alert-success">
+					<strong>Create a new expense</strong>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input4">What did you buy?</label>
+					<div class="controls">
+						<input id="input" class="input span3" type="text">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input4">How much did you spend?</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on">$</span><input id="input" class="input span1" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="control-group span3">
+					<h4>Who bought it?</h4>
+					<div class="btn-group" data-toggle="buttons-radio">
+					  <button type="button" class="btn btn-large btn-primary active">I did!</button>
+					  <button type="button" class="btn btn-large btn-primary">Person 2</button>
+					  <button type="button" class="btn btn-large btn-primary">Person 3</button>
+					</div>
+				</div>
+				<div class="control-group span3">
+					<h4>Who is pitching in?</h4>
+
+					<div class="btn-group" data-toggle="buttons-checkbox">
+					  <button type="button" class="btn btn-large btn-primary active">Me</button>
+					  <button type="button" class="btn btn-large btn-primary active">Person 2</button>
+					  <button type="button" class="btn btn-large btn-primary active">Person 3</button>
+					</div>
+
+				</div>
+
+				<div style="clear:both;"></div>
+
+				<div class="control-group">
+					<label class="checkbox">
+				      <input type="checkbox" checked="checked"> Email everyone an easy payment link - <a href="#">click to see a sample of what we will send</a>
+				    </label>
+				</div>
+				<div class="form-actions pull-right">
+					<button class="btn btn-alt btn-primary btn-large" type="submit">Submit Expense</button>
+					<button class="btn btn-alt btn-large">Cancel</button>
+				</div>
+			</fieldset>
+		</form>					 
+		</div>
+
+	</article>
+	<!-- /Page header -->
+	
+	<!-- Grid row -->
+	<div class="row">
+
+		
+		{{#each expenses}}
+		{{> expense}}
+		{{/each}}
+	
+	</div>
+	<!-- /Grid row -->
+	
+</div>
+<!-- /Right (content) side -->
+</script>
+
+<!-- INDIVIDUAL EXPENSE TEMPLATE -->
+<script id="expense" type="text/html">
+<article class="span12 data-block">
+	<div class="data-container">
+		<header>
+			<h2>Mini Fridge - $150</h2>
+			<ul class="data-header-actions">
+				<li>						
+					<p class="alert-error">You owe $50 for this expense</p>
+					<br/>
+					<a class="btn btn-large btn-danger pull-right" href="#">Pay your share</a>
+				</li>
+			</ul>
+			<br/><br/>
+			<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#details">Details</button>
+		</header>
+		<section>
+			<div id="details" class="collapse out"> 
+				<div class="row">
+					<div class="span4">
+						<h3>Bought by</h3>
+
+						<div class="alert alert-success facebook-friend">
+							<img alt="avatar" src="http://placekitten.com/60/60">
+							<h2 class="pull-right">Andrei Pop - $50</h2>
+						</div>	
+					</div>
+					<div class="span8">
+						<h3>Owed</h3>
+						
+						<div class="alert alert-success facebook-friend">
+							<img alt="avatar" src="http://placekitten.com/60/60">
+							<h2 class="pull-right">Rob ODwyer - $50</h2>
+						</div>		
+
+						<div class="alert alert-error facebook-friend">
+							<img alt="avatar" src="http://placekitten.com/60/60">
+							<h2 class="pull-right">Fred Flinstone - $50</h2>
+						</div>	
+					</div>
+				</div>
+			<br/>
+			<a class="btn btn-alt btn-danger" href="#" onclick="confirm('Are you sure you want to delete this expense?')">Remove expense</a> </div>
+		</section>
+	</div>
+		</article>
+</script>
+
+
+<!-- SETTINGS TEMPLATE -->
+<script id="settings" type="text/html">
+	<div id="settings" class="row-fluid">
+		<br/>
+		<div class="span6">
+			<form>
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="input">Email address</label>
+						<div class="controls">
+							<input id="input" class="input-xlarge" type="text" value="email@facebook.com">
+							<p class="help-block">Change the email address we send you payments to</p>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button class="btn btn-alt btn-large btn-primary" type="submit">Save changes</button>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</script>
+
+<!-- FOOTER TEMPLATE -->
+<script id="footer" type="text/html">
+<p></p>
+<ul>
+	<li><a href="mailto:andreimpop@gmail.com" class="">Support</a></li>
+</ul>
+<a href="index.html#top" class="btn btn-flat pull-right">Top &uarr;</a>
 </script>
 
