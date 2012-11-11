@@ -5,16 +5,14 @@
 		{{> navigation}}
 		{{> content}}		
 	</section>
-		{{> footer}}
+	{{> footer}}
 </script>
 
 <!-- HEADER TEMPLATE -->
 <script id="header" type="text/html">
 <!-- Main page header -->
 <header class="container">
-	<!-- Main page logo -->
-	<h1>xpense</h1>
-	<!-- Main page headline -->
+	<h1>{{applicationName}}</h1>
 	<p>easily buy things with people you know</p>
 	<!-- Alternative navigation -->
 	<nav>
@@ -26,8 +24,8 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><span class="awe-lock"></span>Settings</a></li>
-						<li><a href="#"><span class="awe-remove"></span>Logout</a></li>
+						<li><a id="userSettings"><span class="awe-lock"></span>Settings</a></li>
+						<li><a id="logout"><span class="awe-remove"></span>Logout</a></li>
 					</ul>
 				</div>
 			</li>
@@ -47,30 +45,29 @@
 			<!-- User profile -->
 			<section class="user-profile">
 				<figure>
-					<img alt="John Pixel avatar" src="http://placekitten.com/60/60">
+					<img alt="avatar" src="{{avatarURL}}">
 					<figcaption>
-						<h2 style="margin-top:15px;">Andrei Pop</h2>
+						<h2 style="margin-top:15px;">{{username}}</h2>
 					</figcaption>
 				</figure>
 			</section>
 			<!-- /User profile -->
-			
+
 			<section class="balance">
 				<h2>In total you owe</h2>
-				<strong>$ 80.25</strong>
+				<strong>$ {{amountOwing}}</strong>
 			</section>
 
 			<!-- Main navigation -->
 			<nav class="main-navigation" role="navigation">
+ 
+				<h4>Your Groups</h4>
 				<ul>
-					<li>
-						<a href="#"><span class="awe-th-list"></span>Your Groups</a>
-						<ul>
-							<li><a href="gallery.html">Roommates : $70</a></li>
-							<li><a href="gallery.html">Lab Group : $10.25</a></li>
-						</ul>
-					</li>					
+				{{#groups}}
+					<li><a id="{{_id}}">{{name}} : <strong> ${{owed}} </strong></a></li>
+				{{/groups}}
 				</ul>
+
 				<br/>
 				<a href="#newGroupModal" data-toggle="modal" class="btn btn-success" href="#"> + New expense group</a>
 
@@ -190,9 +187,10 @@
 	<div class="row">
 
 		
-		{{#each expenses}}
-		{{> expense}}
-		{{/each}}
+		{{#expenses}}
+		{{title}}
+			{{> expense}}
+		{{/expenses}}
 	
 	</div>
 	<!-- /Grid row -->
