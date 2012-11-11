@@ -202,21 +202,21 @@
 				<div class="control-group">
 					<label class="control-label" for="input4">What did you buy?</label>
 					<div class="controls">
-						<input id="input" class="input span3" type="text">
+						<input id="whatDidYouBuy" class="input span3" type="text">
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label" for="input4">How much did you spend?</label>
 					<div class="controls">
 						<div class="input-prepend">
-							<span class="add-on">$</span><input id="input" class="input span1" type="text">
+							<span class="add-on">$</span><input id="costOfExpense" class="input span1" type="text">
 						</div>
 					</div>
 				</div>
 
 				<div class="control-group span3">
 					<h4>Who bought it?</h4>
-					<div class="btn-group" data-toggle="buttons-radio">
+					<div id="whoBought" class="btn-group" data-toggle="buttons-radio">
 					  <button type="button" class="btn btn-large btn-primary active">I did!</button>
 					  <button type="button" class="btn btn-large btn-primary">Person 2</button>
 					  <button type="button" class="btn btn-large btn-primary">Person 3</button>
@@ -225,7 +225,7 @@
 				<div class="control-group span3">
 					<h4>Who is pitching in?</h4>
 
-					<div class="btn-group" data-toggle="buttons-checkbox">
+					<div id="whoIsPitching" class="btn-group" data-toggle="buttons-checkbox">
 					  <button type="button" class="btn btn-large btn-primary active">Me</button>
 					  <button type="button" class="btn btn-large btn-primary active">Person 2</button>
 					  <button type="button" class="btn btn-large btn-primary active">Person 3</button>
@@ -241,7 +241,7 @@
 				    </label>
 				</div>
 				<div class="form-actions pull-right">
-					<button class="btn btn-alt btn-primary btn-large" type="submit">Submit Expense</button>
+					<button id="createExpense" class="btn btn-alt btn-primary btn-large" type="submit">Submit Expense</button>
 					<button class="btn btn-alt btn-large">Cancel</button>
 				</div>
 			</fieldset>

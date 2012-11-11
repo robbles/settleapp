@@ -60,6 +60,7 @@ $('#createGroup').live("click", function(){
 	});
     
 	var groupInfo = {
+		_id: null,
 		name: groupName,
 		invited: emails.join(',')
 	}
@@ -70,25 +71,63 @@ $('#createGroup').live("click", function(){
 	  url: '/groups',
 	  data: groupInfo,
 	  dataType: 'json',
-	  succes: function(data){}
+	  success: function(data){
+	  	groupInfo._id = data._id
+	  	var newGroup = ich.singleGroup(groupInfo);
+		$('.yourGroups').append(newGroup);
+		$('#newGroupModal').modal('hide');
+	  }
 	});
 
-  	var newGroup = ich.singleGroup(groupInfo);
-	$('.yourGroups').append(newGroup);
-	
-	$('#newGroupModal').modal('hide');
-
-	return false;
+	return false; // prevent refresh
 });
 
 
 /// HANDLE EXPENSE CREATION
 
+$('#createExpense').live("click", function(){
 
+	var purchase 	  = $("#whatDidYouBuy").val();
+	var cost 	 	  = $('#costOfExpense').val();
 
+	var whoBought	  = null;  
+	$('#whoBought').children().each(function(){  
+		if ($(this).hasClass('active')) {
+			whoBought = this.innerHTML;
+		}  
+	});
 
+	var whoIsPitching = [];
+	$('#whoIsPitching').children().each(function(){  
+		if ($(this).hasClass('active')) {
+			whoIsPitching.push(this.innerHTML);
+		}  
+	});
 
+	var expenseInfo = {
+		_id: null,
+		purchase: purchase,
+		cost: cost,
+		whoBought: whoBought,
+		whoIsPitching: whoIsPitching
+	}
 
+	// send request to create group to server
+	$.ajax({
+	  type: 'POST',
+	  url: '/expenses',
+	  data: expenseInfo,
+	  dataType: 'json',
+	  success: function(data){
+	  	groupInfo._id = data._id
+	  	// var newGroup = ich.singleGroup(groupInfo);
+		//$('.yourGroups').append(newGroup);
+		}/$('#expenseModal').modal('hide');
+	  }
+	});
+
+	return false; // prevent refresh
+});
 
 
 
