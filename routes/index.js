@@ -5,9 +5,11 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 /*
  * GET home page.
  */
+
 app.get('/', 
   ensureLoggedIn('/login'),
   function(req, res) {
+
     console.log('req.user: ' + (typeof req.user) + ' : ' + req.user);
 
     db.User.findOne({_id: req.user}, function(err, user) {
