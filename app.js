@@ -31,6 +31,36 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+// FB login
+var passport = require('passport')
+  , FacebookStrategy = require('passport-facebook').Strategy;
+
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
+passport.use(new FacebookStrategy({
+    clientID: 174503192687578,
+    clientSecret: "e1d324e833de949b88a8958503fe8f52",
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+      
+      // To keep the example simple, the user's Facebook profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Facebook account with a user record in your database,
+      // and return that user instead.
+
+      // create user here
+      return done(null, profile);
+    });
+  }
+));
+
+passport.initialize();
+
 require('./routes');
 require('./routes/groups');
 require('./routes/login');
