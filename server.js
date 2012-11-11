@@ -7,7 +7,7 @@ app = express();
 app.use(express.logger());
 
 app.get('/', function(req, res){
-    res.send('Hello World');
+    res.send();
 });
 
 app.get('/paypalstart', function(req, res) {
