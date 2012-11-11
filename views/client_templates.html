@@ -173,6 +173,10 @@
 		<!-- Left (navigation) side -->
 </script>
 
+<script id="userBadge" type="text/html">
+
+</script>
+
 <!-- CONTENT (RIGHT SIDE) TEMPLATE -->
 <script id="content" type="text/html">
 <!-- Right (content) side -->
@@ -186,9 +190,10 @@
 
 		<p class="pull-right">Add things you buy for this group, easily split payments up, and get paid.</p>
 		<div class="group-members">
-			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
-			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
-			<img alt="John Pixel avatar" src="http://placekitten.com/50/50">
+			<img alt="avatar" src="/img/assets/facebook-profile.png">
+			<img alt="avatar" src="/img/assets/facebook-profile.png">
+			<img alt="avatar" src="/img/assets/facebook-profile.png">
+
 		</div>
 
 		<a class="btn btn-success btn-large pull-right" href="#expenseModal" data-toggle="modal">Add expense</a>
@@ -252,11 +257,10 @@
 	<!-- /Page header -->
 	
 	<!-- Grid row -->
-	<div class="row">
+	<div id="expenses" class="row">
 
 		{{#expenses}}
-		{{title}}
-			{{> expense}}
+			{{>expense}}
 		{{/expenses}}
 	
 	</div>
@@ -271,7 +275,7 @@
 <article class="span12 data-block">
 	<div class="data-container">
 		<header>
-			<h2>Mini Fridge - $150</h2>
+			<h2>{{purchase}} - ${{cost}}</h2>
 			<ul class="data-header-actions">
 				<li>						
 					<p class="alert-error">You owe $50 for this expense</p>
