@@ -16,7 +16,7 @@ function(req, res) {
   });
 });
 
-app.get('/groups/:id', 
+app.get('/groups/:id', ensureLoggedIn('/login'),
 function(req, res) {
   var id = req.params.id;
 
@@ -30,3 +30,18 @@ function(req, res) {
     return res.send(200, group);
   });
 });
+
+app.post('/groups', ensureLoggedIn('/login'),
+function(req, res) {
+  var owner = req.user;
+  var name = req.body.name;
+  var description = req.body.description || 'No Description';
+  var invited = (typeof req.body.invited !== 'undefined')? req.body.invited.split(',') : [];
+
+  db.Group.create(name, description, owner, invited,
+  function(err, group) {
+    if(err) return res.send(500, 'Failed to create group:' + err);
+    return res.send(201, group);
+  });
+});
+

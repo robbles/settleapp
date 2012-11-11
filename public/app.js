@@ -60,9 +60,9 @@ $('#createGroup').live("click", function(){
 	});
     
 	var groupInfo = {
-		groupName: groupName,
-		emails: emails
-	};
+		name: groupName,
+		invited: emails.join(',')
+	}
 
 	// send request to create group to server
 	$.ajax({
