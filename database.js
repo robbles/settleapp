@@ -15,11 +15,6 @@ var UserSchema = new Schema({
   owing: { type: Number, required: true },
 });
 
-
-var InvitedSchema = new Schema({
-  address: { type: String, required: true },
-});
-
 var ExpenseSchema = new Schema({
   name: { type: String, required: true },
   amount: { type: Number, required: true },
@@ -32,16 +27,26 @@ var GroupSchema = new Schema({
   description: { type: String, required: true },
   owner: { type: Schema.Types.ObjectId, ref: 'User' },
   members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-  invited: [{ type: Schema.Types.ObjectId, ref: 'Invited' }],
+  invited: [String],
 });
 
 GroupSchema.statics.findByUser = function (user, cb) {
   this.find({ members: user }, cb);
 };
 
+GroupSchema.statics.create = function (name, description, owner, invited, cb) {
+  var group = new this({
+    name: name,
+    description: description,
+    owner: owner,
+    members: [owner],
+    invited: invited
+  });
+  return group.save(cb);
+};
+
 var Group = exports.Group = mongoose.model('Group', GroupSchema);
 var User = exports.User = mongoose.model('User', UserSchema);
-var Invited = exports.Invited = mongoose.model('Invited', InvitedSchema);
 var Expense = exports.Expense = mongoose.model('Expense', ExpenseSchema);
 
 exports.connect = function() {
