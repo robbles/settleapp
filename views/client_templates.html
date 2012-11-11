@@ -1,15 +1,15 @@
 <!-- MAIN TEMPLATE -->
 <script id="main" type="text/html">
-		{{> header}}
+	{{> header}}
 	<section class="container" role="main">
 		{{# noGroups }}
 			{{> loginProcess}}
-			</section>
+	</section>
 		{{/ noGroups}}
 		{{^ noGroups }}	
 			{{> navigation}}
 			{{> content}}		
-			</section>
+	</section>
 			{{> footer}}
 		{{/ noGroups}}		
 </script>
