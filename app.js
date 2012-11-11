@@ -5,7 +5,6 @@
 
 var express = require('express')
   , engines = require('consolidate')
-  , routes = require('./routes')
   , http = require('http')
   , path = require('path')
   , db = require('./database')
@@ -32,10 +31,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/groups', routes.groups);
-app.get('/groups/:id', routes.group);
-
+require('./routes');
+require('./routes/groups');
 require('./routes/login');
 
 db.connect()
