@@ -62,7 +62,7 @@ $('#createGroup').live("click", function(){
 	var groupInfo = {
 		groupName: groupName,
 		emails: emails
-	}
+	};
 
 	// send request to create group to server
 	$.ajax({
@@ -70,9 +70,11 @@ $('#createGroup').live("click", function(){
 	  url: '/groups',
 	  data: groupInfo,
 	  dataType: 'json',
-	  succes: function(){console.log('create group success!')}
+	  succes: function(data){}
 	});
 
+  	var newGroup = ich.singleGroup(groupInfo);
+	$('.yourGroups').append(newGroup);
 	$('#newGroupModal').modal('hide');
 	
 	return false;
@@ -80,6 +82,7 @@ $('#createGroup').live("click", function(){
 
 
 /// HANDLE EXPENSE CREATION
+
 
 
 

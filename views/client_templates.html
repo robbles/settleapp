@@ -93,6 +93,10 @@
 <!-- /Main page header -->
 </script>
 
+<script id="singleGroup" type="text/html">
+	<li><a id="{{_id}}">{{groupName}} : <strong> ${{owed}} </strong></a></li>
+</script>
+
 <!-- NAVIGATION TEMPLATE -->
 <script id="navigation" type="text/html">
 
@@ -119,10 +123,10 @@
 			<nav class="main-navigation" role="navigation">
  
 				<h4>Your Groups</h4>
-				<ul>
-				{{#groups}}
-					<li><a id="{{_id}}">{{name}} : <strong> ${{owed}} </strong></a></li>
-				{{/groups}}
+				<ul class="youGroups">
+					{{#groups}}
+						{{>singleGroup}}
+					{{/groups}}
 				</ul>
 
 				<br/>
