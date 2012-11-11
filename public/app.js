@@ -29,43 +29,60 @@ Backbone.history.start();
 
 $(document).ready(function () {
 
-  	application_data = {
-		applicationName: "xpense",
-		username: "Andrei Pop",
-		email: "andreimpop@gmail.com",
-		avatarURL: "http://bizzthemes.com/wp-content/uploads/2011/04/facebookAvatar_w_50.png",
-		groups: [
-			{
-			_id: "12343242",
-			name: "Roommates",
-			owed: 70,
-			members: []
-			},
-			{
-			_id: "1daflkdjj",
-			name: "Lab Group",
-			owed: 10.25,
-			members: []
-			}
-		],
-		amountOwing: 80.25
-	};
-  	var main = ich.main(application_data);
+  	var main = ich.main(App);
 	$('body').append(main);
 
+		// adjust the modal for mobile devices
+			var adjustModal = function($modal) {
+			  var top;
+			  if ($(window).width() <= 480) {
+			    if ($modal.hasClass('modal-fullscreen')) {
+			      if ($modal.height() >= $(window).height()) {
+			        top = $(window).scrollTop();
+			      } else {
+			        top = $(window).scrollTop() + ($(window).height() - $modal.height()) / 2;
+			      }
+			    } else if ($modal.height() >= $(window).height() - 10) {
+			      top = $(window).scrollTop() + 10;
+			    } else {
+			      top = $(window).scrollTop() + ($(window).height() - $modal.height()) / 2;
+			    }
+			  } else {
+			    top = '50%';
+			    if ($modal.hasClass('modal-fullscreen')) {
+			      $modal.stop().animate({
+			          marginTop  : -($modal.outerHeight() / 2)
+			        , marginLeft : -($modal.outerWidth() / 2)
+			        , top        : top
+			      }, "fast");
+			      return;
+			    }
+			  }
+			  $modal.stop().animate({ 'top': top }, "fast");
+			};
 
-	expenses = 
-	[
-	{
-		title: "hookers & blow",
-		total: "$500",
-		contributors: [{name:"andrei pop", paid:false}, {name:"joe", paid:true}, {name:"fred", paid:false}]
-	}, 
-	{
-		title: "rent",
-		total: "$1200",
-		contributors: [{name:"andrei pop", paid:true}, {name:"joe", paid:true}, {name:"fred", paid:false}]
-	}
-	];
+			var show = function() {
+			  var $modal = $(this);
+			  adjustModal($modal);
+			};
+
+			var checkShow = function() {
+			  $('.modal').each(function() {
+			    var $modal = $(this);
+			    if ($modal.css('display') !== 'block') return;
+			    adjustModal($modal);
+			  });
+			};
+
+			var modalWindowResize = function() {
+			  $('.modal').not('.modal-gallery').on('show', show);
+			  $('.modal-gallery').on('displayed', show);
+			  checkShow();
+			};
+
+			$(modalWindowResize);
+			$(window).resize(modalWindowResize);
+			$(window).scroll(checkShow);
+
 
 });

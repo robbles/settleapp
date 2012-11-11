@@ -69,7 +69,7 @@
 <script id="header" type="text/html">
 <!-- Main page header -->
 <header class="container">
-	<h1>{{applicationName}}</h1>
+	<h1>{{appName}}</h1>
 	<p>easily buy things with people you know</p>
 	<!-- Alternative navigation -->
 	<nav>
@@ -102,9 +102,9 @@
 			<!-- User profile -->
 			<section class="user-profile">
 				<figure>
-					<img alt="avatar" src="{{avatarURL}}">
+					<img alt="avatar" src="{{user.avatarUrl}}">
 					<figcaption>
-						<h2 style="margin-top:15px;">{{username}}</h2>
+						<h2 style="margin-top:15px;">{{user.name}}</h2>
 					</figcaption>
 				</figure>
 			</section>
@@ -112,7 +112,7 @@
 
 			<section class="balance">
 				<h2>In total you owe</h2>
-				<strong>$ {{amountOwing}}</strong>
+				<strong>$ {{user.owing}}</strong>
 			</section>
 
 			<!-- Main navigation -->
