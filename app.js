@@ -21,11 +21,12 @@ app.configure(function(){
   app.engine('html', engines.ejs);
   app.set('view engine', 'html');
   app.use(express.favicon());
-  app.use(express.logger('dev'));
+  //app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser(settings.SECRET_KEY));
-  app.use(express.session());
+  app.use(express.cookieSession());
+
   // passport
   app.use(passport.initialize());
   app.use(passport.session());
@@ -37,35 +38,6 @@ app.configure(function(){
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
-
-// Use the FacebookStrategy within Passport.
-// Strategies in Passport require a `verify` function, which accept
-// credentials (in this case, an accessToken, refreshToken, and Facebook
-// profile), and invoke a callback with a user object.
-passport.use(new FacebookStrategy({
-    clientID: 174503192687578,
-    clientSecret: "e1d324e833de949b88a8958503fe8f52",
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification
-    process.nextTick(function () {
-      // // create user here
-      // console.log(accessToken);
-      // console.log(profile);
-      return done(null, profile);
-    });
-  }
-));
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
-
-passport.initialize();
 
 require('./routes');
 require('./routes/groups');

@@ -4,8 +4,8 @@ var db = require('../database');
 /*
  * GET home page.
  */
-
 app.get('/', function(req, res){
-  res.render('index', { title: 'Express' });
+  console.log(req.user);
+  res.render('index', { title: 'Express', user: req.user });
 });
 
