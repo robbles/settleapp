@@ -1,6 +1,6 @@
 /*jshint es5:true, laxcomma:true */
 
-var Q = require('Q');
+var Q = require('q');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
