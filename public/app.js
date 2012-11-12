@@ -84,21 +84,21 @@ $('#createGroup').live("click", function(){
 
 $('#nameGroup').live("click", function(){
 	var groupInfo = {
-		_id: null,
-		name: groupName,
+		name: 'name',
 		invited: 'test@example.com'
 	};
 
 	// send request to create group to server
 	$.ajax({
-	  type: 'POST',
-	  url: '/groups',
-	  data: groupInfo,
-	  dataType: 'json',
-	  success: function(data){
-	  	window.location.reload();
-	  }
-	});
+    type: 'POST',
+    url: '/groups',
+    data: groupInfo,
+    dataType: 'json',
+    success: function(data){
+      console.log('success');
+      window.location.reload();
+    }
+  });
 
 	return false; // prevent refresh
 });
