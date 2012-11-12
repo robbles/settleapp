@@ -22,7 +22,8 @@
     "nodemailer": "~0.3.31"
   },
   "engines": {
-    "node": "0.6.x"
+    "node": "0.8.x",
+    "npm": "1.1.x"
   },
   "subdomain": "i-dont-node.nko3"
 }
