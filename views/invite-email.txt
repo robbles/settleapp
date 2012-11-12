@@ -1,0 +1,10 @@
+Hi {{owing}}
+
+{{owed}} is sending you this email to inform you that you owe {{amount}} for {{item}}.
+
+This item is dated for {{date_time}}
+
+You can pay by clicking this link: {{link}}.
+
+Best Regards,
+Team

@@ -1,5 +1,6 @@
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 var db = require('../database');
+var email = require('../email');
 
 /*
  * GET /groups
@@ -40,8 +41,18 @@ function(req, res) {
 
   db.Group.create(name, description, owner, invited,
   function(err, group) {
-    if(err) return res.send(500, 'Failed to create group:' + err);
-    return res.send(201, group);
+    if(err) {
+      console.log('Error creating group: ' + err);
+      return res.send(500, 'Failed to create group:' + err);
+    }
+    console.log('Created group ' + group._id + ': ' + group.invited.length + ' people invited');
+
+    // Return 201 to the user
+    res.send(201, group);
+
+    process.nextTick(function() {
+        
+    });
   });
 });
 

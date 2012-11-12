@@ -31,7 +31,9 @@ var GroupSchema = new Schema({
 });
 
 GroupSchema.statics.findByUser = function (user, cb) {
-  this.find({ members: user }, cb);
+  this.find({ members: user })
+  .populate('members')
+  .exec(cb);
 };
 
 GroupSchema.statics.create = function (name, description, owner, invited, cb) {
@@ -44,6 +46,18 @@ GroupSchema.statics.create = function (name, description, owner, invited, cb) {
   });
   return group.save(cb);
 };
+
+ExpenseSchema.statics.create = function (name, amount, buyer, members, cb) {
+  var expense = new this({
+    name: name,
+    amount: amount,
+    buyer: buyer,
+    members: [buyer],
+    invited: invited
+  });
+  return group.save(cb);
+};
+
 
 var Group = exports.Group = mongoose.model('Group', GroupSchema);
 var User = exports.User = mongoose.model('User', UserSchema);
