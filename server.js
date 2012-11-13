@@ -19,9 +19,9 @@ var passport = require('passport')
 //   credentials (in this case, an accessToken, refreshToken, and Facebook
 //   profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
-    clientID: 174503192687578,
-    clientSecret: e1d324e833de949b88a8958503fe8f52,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    clientID: 200536266748566,
+    clientSecret: 3d396cc170b25369d29b78ffe5b2ecb8,
+    callbackURL: "/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
