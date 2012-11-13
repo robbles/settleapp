@@ -11,32 +11,32 @@ app.get('/', function(req, res){
 });
 
 // FB login
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
+// var passport = require('passport')
+//   , FacebookStrategy = require('passport-facebook').Strategy;
 
-// Use the FacebookStrategy within Passport.
-//   Strategies in Passport require a `verify` function, which accept
-//   credentials (in this case, an accessToken, refreshToken, and Facebook
-//   profile), and invoke a callback with a user object.
-passport.use(new FacebookStrategy({
-    clientID: 200536266748566,
-    clientSecret: 3d396cc170b25369d29b78ffe5b2ecb8,
-    callbackURL: "/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
-    process.nextTick(function () {
+// // Use the FacebookStrategy within Passport.
+// //   Strategies in Passport require a `verify` function, which accept
+// //   credentials (in this case, an accessToken, refreshToken, and Facebook
+// //   profile), and invoke a callback with a user object.
+// passport.use(new FacebookStrategy({
+//     clientID: 200536266748566,
+//     clientSecret: 3d396cc170b25369d29b78ffe5b2ecb8,
+//     callbackURL: "/auth/facebook/callback"
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     // asynchronous verification, for effect...
+//     process.nextTick(function () {
       
-      // To keep the example simple, the user's Facebook profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Facebook account with a user record in your database,
-      // and return that user instead.
+//       // To keep the example simple, the user's Facebook profile is returned to
+//       // represent the logged-in user.  In a typical application, you would want
+//       // to associate the Facebook account with a user record in your database,
+//       // and return that user instead.
 
-      // create user here
-      return done(null, profile);
-    });
-  }
-));
+//       // create user here
+//       return done(null, profile);
+//     });
+//   }
+// ));
 
 // GET /auth/facebook
 //   Use passport.authenticate() as route middleware to authenticate the

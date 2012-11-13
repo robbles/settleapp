@@ -8,8 +8,8 @@ module.exports = {
   SECRET_KEY: process.env.SECRET_KEY || 'secret',
 
   FACEBOOK: {
-    clientID: 174503192687578,
-    clientSecret: "e1d324e833de949b88a8958503fe8f52",
+    clientID: 200536266748566,
+    clientSecret: "3d396cc170b25369d29b78ffe5b2ecb8",
     callbackURL: "/auth/facebook/callback"
   },
 
