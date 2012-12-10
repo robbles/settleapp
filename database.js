@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
-var settings = require('./settings');
+var config = require('./config');
 
 var UserSchema = new Schema({
   name: { type: String, required: true },
@@ -64,6 +64,6 @@ var User = exports.User = mongoose.model('User', UserSchema);
 var Expense = exports.Expense = mongoose.model('Expense', ExpenseSchema);
 
 exports.connect = function() {
-  return Q.ncall(mongoose.connect, mongoose, settings.DATABASE_URL);
+  return Q.ncall(mongoose.connect, mongoose, config.DATABASE_URL);
 };
 

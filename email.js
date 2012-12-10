@@ -1,7 +1,7 @@
 var nodemailer = require("nodemailer");
-var settings = require('./settings');
+var config = require('./config');
 
-var ENABLED = (settings.ENV === 'production');
+var ENABLED = (config.ENV === 'production');
 
 // smtpTransport function creates a new Transport object for SMTP
 var smtpTransport;
@@ -10,8 +10,8 @@ if(ENABLED) {
   smtpTransport = nodemailer.createTransport("SMTP",{
     service: "Gmail",
     auth: {
-      user: settings.EMAIL_USER,
-      pass: settings.EMAIL_PW
+      user: config.EMAIL_USER,
+      pass: config.EMAIL_PW
     }
   });
 } else {

@@ -1,7 +1,7 @@
 /*jshint es5:true, laxcomma:true */
 
 var db = require('../database');
-var settings = require('../settings');
+var config = require('../config');
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -35,9 +35,9 @@ app.get('/auth/facebook/callback',
 // credentials (in this case, an accessToken, refreshToken, and Facebook
 // profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
-    clientID: settings.FACEBOOK.clientID,
-    clientSecret: settings.FACEBOOK.clientSecret,
-    callbackURL: settings.FACEBOOK.callbackURL
+    clientID: config.FACEBOOK.clientID,
+    clientSecret: config.FACEBOOK.clientSecret,
+    callbackURL: config.FACEBOOK.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
     console.log('Access token: ' + accessToken);

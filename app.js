@@ -8,7 +8,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , db = require('./database')
-  , settings = require('./settings')
+  , config = require('./config')
   , passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -24,7 +24,7 @@ app.configure(function(){
   //app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser(settings.SECRET_KEY));
+  app.use(express.cookieParser(config.SECRET_KEY));
   app.use(express.cookieSession());
 
   // passport
@@ -45,7 +45,7 @@ require('./routes/login');
 
 db.connect()
 .then(function() {
-  console.log('Connected to MongoDB at ' + settings.DATABASE_URL);
+  console.log('Connected to MongoDB at ' + config.DATABASE_URL);
   http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));
   });
