@@ -54,31 +54,31 @@ function(req, res) {
     // Return 201 to the user
     res.send(201, group);
 
-    process.nextTick(function() {
+    // Send emails to invited people
+    invited.forEach(function(invitee) {
+      console.log('Sending invite email to ' + invitee + '...');
 
-      // Send emails to invited people
-      invited.forEach(function(invitee) {
-        // Render the template for each email
-        app.render('invite',
-          {
-            invitee: invitee,
-            inviter: owner,
-            group: group.name,
-            link: 'http://link-goes-here.com/fake'
-          }, function(err, body){
-            // Send the email
-            email.sendEmail({
-              from: 'SettleApp Mailer <' + config.EMAIL.USER + '>',
-              to: invitee,
-              subject: "You've been invited to SettleApp!",
-              text: body
-            }, function(err) {
-              if(err) { console.warn('Error sending email: ' + err); }
-            });
-        });
+      // Render the template for each email
+      app.render('invite',
+        {
+          invitee: invitee,
+          inviter: owner,
+          group: group.name,
+          link: 'http://link-goes-here.com/fake'
+        }, function(err, body){
+          // Send the email
+          email.sendEmail({
+            from: 'SettleApp Mailer <' + config.EMAIL.USER + '>',
+            to: invitee,
+            subject: "You've been invited to SettleApp!",
+            text: body
+          }, function(err) {
+            if(err) { return console.warn('Error sending email: ' + err); }
+            console.log('Sent invite email to ' + invitee + ' successfully');
+          });
       });
-
     });
+
   });
 });
 
