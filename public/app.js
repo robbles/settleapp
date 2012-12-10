@@ -29,12 +29,6 @@ Backbone.history.start();
 
 $(document).ready(function () {
 
-
-// $('#nameGroup').click(function(){
-// 	return false;
-// });
-
-
 /// HANDLE GROUP CREATION
 
 // add friends emails on enter
@@ -56,36 +50,34 @@ $('#createGroup').live("click", function(){
 	var groupName = $("#groupName").val();
 	var emails = [];
 	$('.invitedFriends li').each(function(){
-   		emails.push($(this).data('email'));
+    emails.push($(this).data('email'));
 	});
     
 	var groupInfo = {
-		_id: null,
 		name: groupName,
-		invited: emails.join(',')
-	}
+		invited: emails
+  };
 
 	// send request to create group to server
-	$.ajax({
-	  type: 'POST',
-	  url: '/groups',
-	  data: groupInfo,
-	  dataType: 'json',
-	  success: function(data){
-	  	groupInfo._id = data._id
-	  	var newGroup = ich.singleGroup(groupInfo);
-		$('.yourGroups').append(newGroup);
-		$('#newGroupModal').modal('hide');
-	  }
-	});
+  $.ajax({
+    type: 'POST',
+    url: '/groups',
+    data: groupInfo,
+    dataType: 'json',
+    success: function(data){
+      groupInfo._id = data._id;
+      var newGroup = ich.singleGroup(groupInfo);
+      $('.yourGroups').append(newGroup);
+      $('#newGroupModal').modal('hide');
+    }
+  });
 
 	return false; // prevent refresh
 });
 
-$('#nameGroup').live("click", function(){
+$('form#createFirstGroup').live("submit", function(){
 	var groupInfo = {
-		name: 'name',
-		invited: 'test@example.com'
+		name: $(this).find('input').val()
 	};
 
 	// send request to create group to server
@@ -100,7 +92,7 @@ $('#nameGroup').live("click", function(){
     }
   });
 
-	return false; // prevent refresh
+	return false; // prevent default form submit
 });
 
 

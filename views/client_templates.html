@@ -20,17 +20,17 @@
 <section class="container login login-name" role="main" style="">
 	<p>Welcome to {{appName}} - set up your first group to start tracking</p>
 	<div class="data-block">
-		<form>
+		<form id="createFirstGroup">
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="input">Name your first group:</label>
+					<label class="control-label" for="groupName">Name your first group:</label>
 					<div class="controls">
-						<input id="input" class="input-xlarge" type="text">
+						<input id="groupName" class="input-xlarge" type="text" required>
 						<p class="help-block">Enter something simple like "Roommates"</p>
 					</div>
 				</div>
 				<div class="control-group">
-					<button id="nameGroup" class="btn btn-success btn-large pull-right">Next step</button>
+					<button class="btn btn-success btn-large pull-right">Next step</button>
 				</div>
 			</fieldset>				
 		</form>

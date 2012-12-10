@@ -37,7 +37,10 @@ function(req, res) {
   var owner = req.user;
   var name = req.body.name;
   var description = req.body.description || 'No Description';
-  var invited = (typeof req.body.invited !== 'undefined')? req.body.invited.split(',') : [];
+  var invited = req.body.invited || [];
+
+  console.log('Request to create group:');
+  console.log(req.body);
 
   db.Group.create(name, description, owner, invited,
   function(err, group) {
@@ -51,7 +54,7 @@ function(req, res) {
     res.send(201, group);
 
     process.nextTick(function() {
-        
+      // Send emails to invited people
     });
   });
 });
