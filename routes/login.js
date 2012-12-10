@@ -68,12 +68,12 @@ passport.use(new FacebookStrategy({
             return done(err);
           }
           console.log('Created user ' + user._id);
-          return done(null, user._id);
+          return done(null, user);
         });
       }
       else {
         console.log('User found: ' + user._id);
-        return done(null, user._id);
+        return done(null, user);
       }
     });
 
@@ -81,11 +81,13 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, user._id);
 });
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+passport.deserializeUser(function(id, done) {
+  db.User.findById(id, function(err, user) {
+    done(err, user);
+  });
 });
 
 passport.initialize();

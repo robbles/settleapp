@@ -12,27 +12,14 @@ app.get('/',
 
     console.log('req.user: ' + (typeof req.user) + ' : ' + req.user);
 
-    db.User.findOne({_id: req.user}, function(err, user) {
+    db.Group.findByUser(req.user, function(err, groups) {
       if(err) {
         console.log('Error finding user: ' + err);
-        return res.send(500, 'Error fetching user data for: ' + req.user);
+        return res.send(500, 'Error fetching groups for: ' + req.user);
       }
-      if(!user) {
-        return res.send(404, 'User not found: ' + req.user);
-      }
-      else {
-        console.log('User found: ' + user._id);
+      console.log(groups.length + ' groups found');
 
-        db.Group.findByUser(user, function(err, groups) {
-          if(err) {
-            console.log('Error finding user: ' + err);
-            return res.send(500, 'Error fetching user data for: ' + req.user);
-          }
-          console.log(groups.length + ' groups found');
-
-          res.render('index', { title: 'SettleApp', user: user, groups: groups });
-        });
-      }
+      res.render('index', { title: 'SettleApp', user: req.user, groups: groups });
     });
 });
 

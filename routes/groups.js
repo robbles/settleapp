@@ -62,9 +62,9 @@ function(req, res) {
       app.render('invite',
         {
           invitee: invitee,
-          inviter: owner,
+          inviter: owner.name,
           group: group.name,
-          link: 'http://link-goes-here.com/fake'
+          link: 'http://settleapp.heroku.com/not-implemented-dont-click-here'
         }, function(err, body){
           // Send the email
           email.sendEmail({
