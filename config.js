@@ -24,7 +24,7 @@ module.exports = {
   },
 
   EMAIL: {
-       user: getFromEnv('EMAIL_USER'),
-       pass: getFromEnv('EMAIL_PW'),
+       USER: getFromEnv('EMAIL_USER'),
+       PASS: getFromEnv('EMAIL_PW'),
    }
 };

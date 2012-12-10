@@ -10,8 +10,8 @@ if(ENABLED) {
   smtpTransport = nodemailer.createTransport("SMTP",{
     service: "Gmail",
     auth: {
-      user: config.EMAIL_USER,
-      pass: config.EMAIL_PW
+      user: config.EMAIL.USER,
+      pass: config.EMAIL.PASS
     }
   });
 } else {
@@ -34,7 +34,7 @@ exports.sendEmail = function(opt, callback) {
     from: opt.from, // sender address
     to: opt.to, // comma separated list of receivers
     subject: opt.subject, // Subject line
-    text: opt.body // plaintext body
+    text: opt.text // plaintext body
   }, callback);
 };
 
