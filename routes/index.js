@@ -30,7 +30,7 @@ app.get('/',
           }
           console.log(groups.length + ' groups found');
 
-          res.render('index', { title: 'Express', user: user, groups: groups });
+          res.render('index', { title: 'SettleApp', user: user, groups: groups });
         });
       }
     });
